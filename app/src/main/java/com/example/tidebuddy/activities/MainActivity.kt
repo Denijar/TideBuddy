@@ -1,37 +1,40 @@
-package com.example.tidebuddy
+package com.example.tidebuddy.activities
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.tidebuddy.R
 import kotlin.random.Random
+import android.app.AlarmManager
+
+import android.app.PendingIntent
+import androidx.core.app.AlarmManagerCompat
+import com.example.tidebuddy.receivers.HighTideNotificationReceiver
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        createNotificationChannel();
-
         super.onCreate(savedInstanceState);
+
+        createNotificationChannel();
+        scheduleNotification();
         setContentView(R.layout.activity_main);
     }
 
     /** Sends a notification when the high tide button is clicked **/
-    fun onHighTideClick(view: View) {
-        var builder = NotificationCompat.Builder(this, getString(R.string.high_tide_channel_id))
+    fun onHighTideClick() {
+        val builder = NotificationCompat.Builder(this, getString(R.string.high_tide_channel_id))
             .setSmallIcon(R.drawable.high_tide_notification_icon)
             .setContentTitle("It's high tide!")
             .setContentText("Go for a swim")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        // send the notification
-        val notificationId = Random.nextInt(1000);
-
-        with(NotificationManagerCompat.from(this)) {
-            notify(notificationId, builder.build())
-        }
+        NotificationManagerCompat.from(this).notify(Random.nextInt(1000), builder.build());
     }
 
     private fun createNotificationChannel() {
@@ -45,4 +48,18 @@ class MainActivity : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+    private fun scheduleNotification(){
+        val currentTime = System.currentTimeMillis();
+        val tenSeconds = 1000 * 10;
+        val triggerReminder = currentTime + tenSeconds; //triggers a reminder after 10 seconds.
+
+        val intent = Intent(this, HighTideNotificationReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        val alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+        AlarmManagerCompat.setExact(alarmManager, AlarmManager.RTC_WAKEUP, triggerReminder, pendingIntent);
+    }
+
+
 }
