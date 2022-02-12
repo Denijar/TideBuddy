@@ -9,6 +9,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.TaskStackBuilder
 import com.example.tidebuddy.activities.HighTideNotificationActivity
 import com.example.tidebuddy.R
+import com.example.tidebuddy.utils.NotificationUtil
 
 class HighTideNotificationReceiver : BroadcastReceiver() {
 
@@ -18,13 +19,9 @@ class HighTideNotificationReceiver : BroadcastReceiver() {
             addNextIntentWithParentStack(highTideIntent)
             getPendingIntent(0, PendingIntent.FLAG_IMMUTABLE)
         }
-        val builder = NotificationCompat.Builder(context, context.getString(R.string.high_tide_channel_id))
-            .setSmallIcon(R.drawable.high_tide_notification_icon)
-            .setContentTitle("It's high tide in 10 Seconds!")
-            .setContentText("Go for a swim")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(highTidePendingIntent)
 
-        NotificationManagerCompat.from(context).notify(0, builder.build())
+        NotificationUtil(context).run {
+            triggerNotification(getString(R.string.high_tide_channel_id), R.drawable.high_tide_notification_icon, "It's high tide in 10 seconds!", "Go for a swim", highTidePendingIntent)
+        }
     }
 }
