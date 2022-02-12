@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Create High tide alert notification channel
         NotificationUtil(this).run { createNotificationChannel(getString(R.string.high_tide_channel_id), getString(R.string.high_tide_channel_name)) }
+        // Schedule a broadcast 10s after app is opened, to be handled by HighTideNotificationReceiver
         BroadcastUtil(this).run { scheduleBroadcast(System.currentTimeMillis() + 1000 * 10, HighTideNotificationReceiver::class.java) }
         setContentView(R.layout.activity_main);
     }

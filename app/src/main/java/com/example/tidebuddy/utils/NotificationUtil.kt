@@ -12,6 +12,8 @@ import androidx.core.app.NotificationManagerCompat
 import kotlin.random.Random
 
 class NotificationUtil(base: Context?) : ContextWrapper(base) {
+
+    /** Creates a notification channel **/
     fun createNotificationChannel(channelId: String, channelName: String) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             val importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -23,6 +25,7 @@ class NotificationUtil(base: Context?) : ContextWrapper(base) {
         }
     }
 
+    /** Triggers a notification **/
     fun triggerNotification(channelId: String, icon: Int, title: String, text: String, pendingIntent: PendingIntent?) {
         val builder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(icon)

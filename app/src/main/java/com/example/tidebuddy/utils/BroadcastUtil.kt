@@ -10,6 +10,7 @@ import androidx.core.app.AlarmManagerCompat
 
 class BroadcastUtil(base: Context?) : ContextWrapper(base) {
 
+    /** Schedules a one-off broadcast at the given time in milliseconds **/
     fun scheduleBroadcast(time: Long, broadcastReceiver: Class<out BroadcastReceiver>){
         val intent = Intent(this, broadcastReceiver)
         val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
