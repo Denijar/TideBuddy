@@ -1,13 +1,13 @@
-package com.example.tidebuddy.activities
+package com.tidebuddy.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tidebuddy.R
 
 import android.view.View
-import com.example.tidebuddy.receivers.HighTideNotificationReceiver
-import com.example.tidebuddy.utils.BroadcastUtil
-import com.example.tidebuddy.utils.NotificationUtil
+import com.tidebuddy.R
+import com.tidebuddy.receivers.HighTideNotificationReceiver
+import com.tidebuddy.utils.BroadcastUtil
+import com.tidebuddy.utils.NotificationUtil
 
 
 class MainActivity : AppCompatActivity() {

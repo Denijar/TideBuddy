@@ -1,13 +1,13 @@
-package com.example.tidebuddy.receivers
+package com.tidebuddy.receivers
 
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.TaskStackBuilder
-import com.example.tidebuddy.activities.HighTideNotificationActivity
-import com.example.tidebuddy.R
-import com.example.tidebuddy.utils.NotificationUtil
+import com.tidebuddy.R
+import com.tidebuddy.activities.HighTideNotificationActivity
+import com.tidebuddy.utils.NotificationUtil
 
 class HighTideNotificationReceiver : BroadcastReceiver() {
 

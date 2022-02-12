@@ -1,8 +1,8 @@
-package com.example.tidebuddy.activities
+package com.tidebuddy.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tidebuddy.R
+import com.tidebuddy.R
 
 class HighTideNotificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
