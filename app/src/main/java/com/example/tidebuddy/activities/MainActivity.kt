@@ -13,6 +13,7 @@ import kotlin.random.Random
 import android.app.AlarmManager
 
 import android.app.PendingIntent
+import android.view.View
 import androidx.core.app.AlarmManagerCompat
 import com.example.tidebuddy.receivers.HighTideNotificationReceiver
 
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Sends a notification when the high tide button is clicked **/
-    fun onHighTideClick() {
+    fun onHighTideClick(view: View) {
         val builder = NotificationCompat.Builder(this, getString(R.string.high_tide_channel_id))
             .setSmallIcon(R.drawable.high_tide_notification_icon)
             .setContentTitle("It's high tide!")
