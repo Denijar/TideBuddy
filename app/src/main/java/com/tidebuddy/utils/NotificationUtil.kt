@@ -1,4 +1,4 @@
-package com.example.tidebuddy.utils
+package com.tidebuddy.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

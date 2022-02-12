@@ -1,4 +1,4 @@
-package com.example.tidebuddy
+package com.tidebuddy
 
 import org.junit.Test
 
