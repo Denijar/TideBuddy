@@ -3,4 +3,5 @@
     <string name="high_tide_channel_id">high_tide</string>
     <string name="high_tide_channel_name">High tide alert</string>
     <string name="button_high_tide">It\'s high tide!</string>
+    <string name="button_when_high_tide">When is high tide?</string>
 </resources>
