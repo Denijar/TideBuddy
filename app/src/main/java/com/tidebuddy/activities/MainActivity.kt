@@ -5,6 +5,7 @@ import android.os.Bundle
 
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.tidebuddy.BuildConfig
 import com.tidebuddy.R
 import com.tidebuddy.network.niwa.TideApi
 import com.tidebuddy.receivers.HighTideNotificationReceiver
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
          val tideApi = TideApi.create();
 
          lifecycleScope.launchWhenCreated {
-             val tideResponse = tideApi.getTideData("-36.81782","174.690079", "XXXX");
+             val tideResponse = tideApi.getTideData("-36.81782","174.690079", BuildConfig.NIWA_TIDE_BUDDY_API_KEY);
              if (tideResponse.isSuccessful) {
                  val tideData = tideResponse.body();
                  if (tideData != null) {
