@@ -22,6 +22,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        // API key located in user .gradle/gradle.properties file
+        it.buildConfigField('String', 'NIWA_TIDE_BUDDY_API_KEY', NiwaTideBuddyApiKey)
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
