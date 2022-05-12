@@ -1,6 +1,6 @@
-package com.tidebuddy.network
+package com.tidebuddy.network.niwa
 
-import com.tidebuddy.network.data.TideData
+import com.tidebuddy.network.niwa.data.TideData
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
